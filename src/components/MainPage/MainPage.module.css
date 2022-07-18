@@ -1,0 +1,7 @@
+.mainActive {
+    display: none;
+}
+.flex {
+    display: flex;
+    justify-content: center;
+  }
