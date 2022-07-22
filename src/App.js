@@ -1,34 +1,30 @@
 import './App.css';
 import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
 import cn from 'classnames';
-import Sushi from './components/Sushi/Sushi';
-import Pizza from './components/Pizza/Pizza';
 import MainPage from './components/MainPage/MainPage';
-import { Navigate } from "react-router-dom";
+import store from './redux/reduxStore';
+import { Provider } from 'react-redux';
+import PizzaContainer from './components/Pizza/PizzaContainer';
+import SushiContainer from './components/Sushi/SushiContainer';
 
 
 function App() {
   return (
     <BrowserRouter>
+   <Provider store={store}>
       <div className="App">
         <header className='border'>
-
           <p>
-          <NavLink to='/'>pizza-sushi-app</NavLink>
+            <NavLink to='/'>pizza-sushi-app</NavLink>
           </p>
-
-
         </header>
         <main >
           <h1>what do you want? pizza or sushi?</h1>
           <div className={cn('border', 'flex')}>
-            
-
             <Routes>
-           {/*  <Route exact path="/" element={<Navigate to={'/'} />} /> */}
-              <Route path='/' element={<MainPage/>}></Route>
-              <Route path="/sushi" element={<Sushi />} />
-              <Route path="/pizza" element={<Pizza />} />
+              <Route path='/' element={<MainPage />}></Route>
+              <Route path="/sushi" element={<SushiContainer />} />
+              <Route path="/pizza" element={<PizzaContainer />} />
             </Routes>
           </div>
         </main>
@@ -37,6 +33,7 @@ function App() {
           npm i react-router-dom -save
         </footer>
       </div>
+      </Provider>
     </BrowserRouter>
   );
 }
