@@ -13,6 +13,7 @@ function App() {
     <BrowserRouter>
    <Provider store={store}>
       <div className="App">
+        <div className='container'>
         <header className='border'>
           <p>
             <NavLink to='/'>pizza-sushi-app</NavLink>
@@ -32,6 +33,7 @@ function App() {
           footer
           npm i react-router-dom -save
         </footer>
+        </div>
       </div>
       </Provider>
     </BrowserRouter>

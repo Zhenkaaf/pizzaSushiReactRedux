@@ -1,0 +1,8 @@
+.item {
+    width: 400px;
+    margin: 15px;
+    background-color: blueviolet;
+}
+.ItemImg img {
+    max-width: 400px;
+}
