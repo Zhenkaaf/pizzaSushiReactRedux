@@ -6,19 +6,20 @@ import store from './redux/reduxStore';
 import { Provider } from 'react-redux';
 import PizzaContainer from './components/Pizza/PizzaContainer';
 import SushiContainer from './components/Sushi/SushiContainer';
+import HeaderContainer from './components/Header/HeaderContainer';
+
 
 
 function App() {
+
+
   return (
     <BrowserRouter>
    <Provider store={store}>
       <div className="App">
         <div className='container'>
-        <header className='border'>
-          <p>
-            <NavLink to='/'>pizza-sushi-app</NavLink>
-          </p>
-        </header>
+        <HeaderContainer></HeaderContainer>
+        
         <main >
           <h1>what do you want? pizza or sushi?</h1>
           <div className={cn('border', 'flex')}>
