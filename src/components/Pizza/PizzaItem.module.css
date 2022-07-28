@@ -12,3 +12,6 @@
 .regular {
     background-color: burlywood;
 }
+.modal {
+    position: absolute;
+}
