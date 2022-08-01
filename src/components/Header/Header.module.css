@@ -1,0 +1,36 @@
+
+.header {
+    position: relative;
+}
+.shopCartBlock img {
+   position: absolute;
+   top: -50px;
+   right: 20px;
+   width: 40px;
+   height: 40px;
+}
+/* .shopCartBlock:after {
+    content: attr(dat);
+    position: absolute;
+    background-color: red;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    border-radius: 50%;
+    top: -22px;
+    right: 15px;
+    color: #fff;
+} */
+.spanData {
+    position: absolute;
+    background-color: red;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    border-radius: 50%;
+    top: -22px;
+    right: 15px;
+    color: #fff;
+    box-sizing: border-box;
+    line-height: 19px;
+}

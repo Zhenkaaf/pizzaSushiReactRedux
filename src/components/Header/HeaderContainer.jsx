@@ -1,16 +1,21 @@
 import { connect } from "react-redux";
 import Header from "./Header.jsx";
 import { getTimeThunkCreator } from './../../redux/HeaderReducer.js';
+import { updateDataActionCreator } from "../../redux/ShoppingCartReducer.js";
 
 let mapStateToProps = (state) => {
     return {
-        headerPage: state.HeaderPage
+        headerPage: state.HeaderPage,
+        cartPage: state.CartPage
     }
 }
 let mapDispatchToProps = (dispatch) => {
     return {
         getTimee: () => {
             dispatch(getTimeThunkCreator())
+        },
+        updateDataOrderPizza: (data) => {
+            dispatch(updateDataActionCreator(data))
         }
     }
 }

@@ -1,16 +1,19 @@
 import { connect } from "react-redux";
 import ShoppingCart from "./ShoppingCart.jsx";
+import { delPizzaActionCreator } from './../../redux/ShoppingCartReducer.js';
 
 let mapStateToProps = (state) => {
-    
     return {
-        
         cartPage: state.CartPage
     }
 }
 let mapDispatchToProps = (dispatch) => {
     return {
-
+        delPizza: (e) => {
+            let pizzaIndex = e.target.parentNode.parentNode.id;
+            alert(pizzaIndex);
+            dispatch(delPizzaActionCreator(pizzaIndex));
+        }
     }
 }
 

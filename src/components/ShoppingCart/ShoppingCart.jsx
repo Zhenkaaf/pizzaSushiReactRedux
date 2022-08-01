@@ -3,8 +3,9 @@ import style from './ShoppingCart.module.css';
 
 const ShoppingCart = (props) => {
     console.log(props);
-    let PizzzaList = props.cartPage.orderList.map(item => {
-        return <OrderItem name={item.name} size={item.size} price={item.price} count={item.count}></OrderItem>;
+    let PizzzaList = props.cartPage.orderList.map((item, index) => {
+        return <OrderItem key={index} index={index} 
+        name={item.name} size={item.size} price={item.price} count={item.count} del={props.delPizza}></OrderItem>;
     });
 
 
@@ -29,12 +30,13 @@ const ShoppingCart = (props) => {
 
 const OrderItem = (props) => {
     return (
-        <div>
+        <div id={props.index}>
             <div>{props.name}</div>
             <div>{props.size}</div>
             <div>{props.count}</div>
             <div>{props.price}</div>
-            <div><button>delete</button></div>
+            {/* <div>{props.index}</div> */}
+            <div><button onClick={(e) => {props.del(e)}}>delete</button></div>
         </div>
     )
 }

@@ -16,14 +16,13 @@ let mapDispatchToProps = (dispatch) => {
         changeDiametr: (event) => {
             let pizzaId = event.target.parentNode.parentNode.id;
             let sizeId = event.target.id;
-            dispatch(changeDiametrActionCreator(pizzaId, sizeId))
+            dispatch(changeDiametrActionCreator(pizzaId, sizeId));
         },
         getPizzaInfo: (event) => {
             let pizzaId = event.target.parentNode.parentNode.id;
-            dispatch(getPizzaInfoActionCreator(pizzaId))
+            dispatch(getPizzaInfoActionCreator(pizzaId));
         },
         sentInfoToCart: (pizzaInfo) => {
-           
             dispatch(setInfoToCartActionCreator(pizzaInfo));
         }
     }
