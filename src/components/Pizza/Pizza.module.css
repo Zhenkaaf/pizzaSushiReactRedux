@@ -1,6 +1,42 @@
+p, h2 {
+    margin: 0;
+    padding: 0;
+}
+.pizzaPage {
+    margin-top: 100px;
+   
+}
 .pizzasBody {
-    max-width: 1440px;
     display: flex;
     flex-wrap: wrap;
-    margin: 0 auto; 
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.title {
+    max-width: 900px;
+    margin: 0 auto;
+}
+h2 {
+    text-transform: uppercase;
+    font-size: 36px;
+    font-weight: 500;
+    line-height: 44px;
+    margin: 10px;
+}
+.titleDescription {
+    margin: 0 0 30px 0;
+    font-weight: 300;
+    color: #545454;
+}
+.searchBlock {
+    display: flex;
+    margin-bottom: 20px;
+}
+.search {
+    border: 1px #6abd44 solid;
+    font-size: 15px;
+    font-weight: 400;
+    color: #444;
+    width: 400px;
+    padding: 10px;
 }

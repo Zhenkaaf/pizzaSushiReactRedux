@@ -1,15 +1,17 @@
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { ModalCartIsEmpty } from "../Modal/Modal";
 import shopCart from './../../img/shopCart.png';
+import logo from './../../img/logo.svg';
 import style from './Header.module.css';
+
 
 const Header = (props) => {
     /* if (props.headerPage.currentTime == null) {
        setInterval(props.getTimee, 60000);
     } */
-    console.log(props);
-    console.log(props.cartPage.orderList);
+
 
     /*  let localStorageArr = JSON.parse(returnedObj);
      
@@ -18,6 +20,9 @@ const Header = (props) => {
      console.log(localStorageArr); */
 
     useEffect(() => {
+        if (localStorage.getItem('myKey') == null) {
+            return
+        }
         if (props.cartPage.orderList.length == 0) {
             let returnedObj = localStorage.getItem('myKey');
             let localStorageArr = JSON.parse(returnedObj);
@@ -27,28 +32,39 @@ const Header = (props) => {
             }
         }
     })
+    let isCartEmpty = props.cartPage.orderList.length;
+    let cartLink = '/cart';
+    if (isCartEmpty == false) {
+        cartLink = '/';
+    }
 
-
+    const [openModal, setOpenModal] = useState(false);
     return (
         <header>
+            <div className={style.headerBody}>
             <p>
-                <NavLink to='/'>pizza-sushi-app</NavLink>
+                <NavLink to='/'><img className={style.logo} src={logo} alt="" /></NavLink>
             </p>
             <div>
 
-                <div className={style.header}>
-                    <NavLink to='/cart'>
-                        <div dat='8' className={style.shopCartBlock}>
-                            <img src={shopCart} alt="" />
+                <div className={style.headerCart}>
+                    <NavLink to={cartLink}>
+                        <div className={style.shopCartBlock}>
+                            <img src={shopCart} alt="" onClick={() => {
+                                if (isCartEmpty == false) {
+                                    setOpenModal(true);
+                                }
+                            }} />
                             <span className={style.spanData}>{props.cartPage.orderList.length}</span>
                         </div>
                     </NavLink>
                 </div>
+                {openModal && <ModalCartIsEmpty setOpenModal={setOpenModal}></ModalCartIsEmpty>}
             </div>
             <div>
                 {/* {props.headerPage.currentTime} */}
             </div>
-
+            </div>
         </header>
     )
 }

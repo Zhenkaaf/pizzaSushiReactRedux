@@ -17,8 +17,9 @@ function App() {
     <BrowserRouter>
       <Provider store={store}>
         <div className={style.App}>
+        <HeaderContainer></HeaderContainer>
           <div className={style.container}>
-            <HeaderContainer></HeaderContainer>
+            
             <main className={style.main} >
               <div className={cn(style.border)}>
                 <Routes>

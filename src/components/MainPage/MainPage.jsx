@@ -6,7 +6,7 @@ import style from './MainPage.module.css';
 
 const MainPage = () => {
     return (
-        <div>
+        <div className={style.mainBody}>
             <h1>what do you want? pizza or sushi?</h1>
 
             <div className={cn(style.flex)}>

@@ -21,4 +21,21 @@ const Modal = (props) => {
         </div>
     )
 }
+
+export const ModalCartIsEmpty = (props) => {
+    return (
+        <div className={style.modalBackground}>
+            <div className={style.modalBody}>
+                <div className={style.modalContent}>
+                    <button onClick={() => { props.setOpenModal(false) }}>close</button>
+                    <div className={style.title}>Ваша корзина пуста</div>
+                </div>
+
+            </div>
+        </div>
+    )
+}
+
+
 export default Modal;
+

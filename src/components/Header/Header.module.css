@@ -1,10 +1,26 @@
-
-.header {
+p {
+    margin: 0;
+    padding: 0;
+}
+header {
+    border-bottom: 1px solid #6abd44;
+    position: fixed;
+    width: 100%;
+    background-color: #fff;
+    z-index: 2;
+}
+.headerBody {
+    margin: 0 auto;
+    max-width: 1440px;
+}
+.headerCart {
     position: relative;
+  
+    
 }
 .shopCartBlock img {
    position: absolute;
-   top: -50px;
+   top: -65px;
    right: 20px;
    width: 40px;
    height: 40px;
@@ -23,14 +39,18 @@
 } */
 .spanData {
     position: absolute;
-    background-color: red;
+    background-color: #e31e24;
     width: 20px;
     height: 20px;
     display: inline-block;
     border-radius: 50%;
-    top: -22px;
+    top: -37px;
     right: 15px;
     color: #fff;
     box-sizing: border-box;
     line-height: 19px;
+}
+.logo {
+    width: 200px;
+    margin: 5px;
 }

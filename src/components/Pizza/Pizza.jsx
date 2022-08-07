@@ -6,7 +6,7 @@ import Modal from '../Modal/Modal.jsx';
 
 
 const Pizza = (props) => {
-  
+
     const [desiredPizza, setDesiredPizza] = useState('');
     const [openModal, setOpenModal] = useState(false);
     const findPizzaNeed = (e) => {
@@ -29,17 +29,25 @@ const Pizza = (props) => {
 
     return (
         <div>
-            <div className={style.grayBackground}>
-                <h2>I am pizza's block</h2>
-                <div>
-                    <input onChange={findPizzaNeed} value={desiredPizza} placeholder={'Поиск'}></input>
+            <div className={style.pizzaPage}>
+                <div className={style.title}>
+                    <h2>КРУГЛЫЕ ПИЦЦЫ. ДОСТАВКА ПО ХАРЬКОВУ</h2>
+                    <p className={style.titleDescription}>Классическая круглая итальянская пицца, выпеченная по собственной, уникальной технологии с использованием самых свежих и качественных ингредиентов.
+                        Идеально пропеченная основа, множество вариаций разнообразных соусов,
+                        всегда щедрая порция сочной начинки: побаловать себя лучшей пиццей в Харькове теперь можно в любое время -
+                        быстрая доставка и простые способы оплаты к вашим услугам.
+                    </p>
+                </div>
+
+                <div className={style.searchBlock}>
+                    <input className={style.search} onChange={findPizzaNeed} value={desiredPizza} placeholder={'Поиск'}></input>
                 </div>
                 <div className={style.pizzasBody}>
                     {pizzas}
                 </div>
             </div>
             <div className={style.modal}>
-                {openModal && <Modal setOpenModal={setOpenModal} info={props.pizzaPage.pizzaInfo[0]} sentInfoToCart={props.sentInfoToCart}/>}
+                {openModal && <Modal setOpenModal={setOpenModal} info={props.pizzaPage.pizzaInfo[0]} sentInfoToCart={props.sentInfoToCart} />}
             </div>
         </div>
     )
