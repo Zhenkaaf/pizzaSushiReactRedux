@@ -27,7 +27,7 @@ const Header = (props) => {
             let returnedObj = localStorage.getItem('myKey');
             let localStorageArr = JSON.parse(returnedObj);
             if (localStorageArr.length != 0) {
-                alert('useEffect');
+               
                 props.updateDataOrderPizza(returnedObj);
             }
         }

@@ -35,3 +35,43 @@ tbody tr:nth-child(odd) {
 .totalSum {
     color: #e31e24;
 }
+
+
+
+
+/*-----FORMIK---------------------*/
+.formikBody {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -10px;
+    margin-left: -10px;
+}
+
+.formikBody p{
+   margin: 10px;
+  
+  }
+  .sizeBig {
+    flex: 0 1 calc(66% - 20px);
+}
+.sizeSmall {
+    flex: 0 1 calc(33% - 20px);
+}
+  .input {
+   
+    border: none;
+    background: #f9f9f9!important;
+    height: 48px;
+    width: 100%;
+    text-align: left;
+   /*  padding: 0px 20px; */
+   
+  }
+  .error {
+    color: red;
+    font-weight: 400;
+    font-size: 10px;
+  }
+  .red {
+    border: 1px solid red;
+  }

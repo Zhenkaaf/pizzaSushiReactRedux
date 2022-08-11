@@ -11,7 +11,7 @@ let mapDispatchToProps = (dispatch) => {
     return {
         delPizza: (e) => {
             let pizzaIndex = e.target.parentNode.parentNode.id;
-            alert(pizzaIndex);
+          
             dispatch(delPizzaActionCreator(pizzaIndex));
         }
     }
