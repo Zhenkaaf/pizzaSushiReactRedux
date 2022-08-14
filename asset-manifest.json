@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/pizzaSushiReactRedux/static/css/main.2930cd77.css",
+    "main.js": "/pizzaSushiReactRedux/static/js/main.6bbf5ec9.js",
+    "static/js/787.28cb0dcd.chunk.js": "/pizzaSushiReactRedux/static/js/787.28cb0dcd.chunk.js",
+    "static/media/logo.svg": "/pizzaSushiReactRedux/static/media/logo.d8c1544f6a504554dbb36f0421326e5f.svg",
+    "static/media/shopCart.png": "/pizzaSushiReactRedux/static/media/shopCart.e98f31b9cd120f7a4739.png",
+    "index.html": "/pizzaSushiReactRedux/index.html",
+    "main.2930cd77.css.map": "/pizzaSushiReactRedux/static/css/main.2930cd77.css.map",
+    "main.6bbf5ec9.js.map": "/pizzaSushiReactRedux/static/js/main.6bbf5ec9.js.map",
+    "787.28cb0dcd.chunk.js.map": "/pizzaSushiReactRedux/static/js/787.28cb0dcd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2930cd77.css",
+    "static/js/main.6bbf5ec9.js"
+  ]
+}
