@@ -22,7 +22,7 @@ return <SushiItem key={item.sushiId} name={item.name} price={item.price} imgUrl=
 });
 
     return (
-        <div>
+        <div className={style.sushiPage}>
           <h2>I am sushi's block</h2>
           <div>
             <input onChange={fn} value={desiredSushie} placeholder={'Поиск'}></input>

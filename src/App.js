@@ -17,22 +17,20 @@ function App() {
     <BrowserRouter>
       <Provider store={store}>
         <div className={style.App}>
-        <HeaderContainer></HeaderContainer>
+          <HeaderContainer></HeaderContainer>
           <div className={style.container}>
-            
             <main className={style.main} >
               <div className={cn(style.border)}>
                 <Routes>
                   <Route path='/' element={<MainPage />}></Route>
-                  <Route path="/sushi" element={<SushiContainer />}></Route>
                   <Route path="/pizza" element={<PizzaContainer />}></Route>
+                  <Route path="/sushi" element={<SushiContainer />}></Route>
                   <Route path="/cart" element={<ShoppingCartContainer />}></Route>
                 </Routes>
               </div>
             </main>
-            <footer className={style.border}>
+            <footer className={style.footer}>
               footer
-              npm i react-router-dom -save
             </footer>
           </div>
         </div>

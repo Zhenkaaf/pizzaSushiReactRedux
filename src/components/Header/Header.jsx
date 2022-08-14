@@ -27,7 +27,7 @@ const Header = (props) => {
             let returnedObj = localStorage.getItem('myKey');
             let localStorageArr = JSON.parse(returnedObj);
             if (localStorageArr.length != 0) {
-               
+
                 props.updateDataOrderPizza(returnedObj);
             }
         }
@@ -42,28 +42,39 @@ const Header = (props) => {
     return (
         <header>
             <div className={style.headerBody}>
-            <p>
-                <NavLink to='/'><img className={style.logo} src={logo} alt="" /></NavLink>
-            </p>
-            <div>
-
-                <div className={style.headerCart}>
-                    <NavLink to={cartLink}>
-                        <div className={style.shopCartBlock}>
-                            <img src={shopCart} alt="" onClick={() => {
-                                if (isCartEmpty == false) {
-                                    setOpenModal(true);
-                                }
-                            }} />
-                            <span className={style.spanData}>{props.cartPage.orderList.length}</span>
-                        </div>
-                    </NavLink>
+                <div className={style.flexBoxLeft}>
                 </div>
+                <div className={style.flexBoxCenter}>
+                    <div className={style.menuLink}>
+                        <NavLink to='/pizza'>Пицца</NavLink>
+                    </div>
+                    <div className={style.logoBlock}>
+                        <NavLink to='/'><img className={style.logo} src={logo} alt="" /></NavLink>
+                    </div>
+                    <div className={`${style.menuLink} ${style.menuLinkSushi}`}>
+                        <NavLink to='/sushi'>Суши</NavLink>
+                    </div>
+                </div>
+                <div className={style.flexBoxRight}>
+                    <div className={style.headerCart}>
+                        <NavLink to={cartLink}>
+                            <div className={style.shopCartBlock}>
+                                <img src={shopCart} alt="" onClick={() => {
+                                    if (isCartEmpty == false) {
+                                        setOpenModal(true);
+                                    }
+                                }} />
+                                <span className={style.spanData}>{props.cartPage.orderList.length}</span>
+                            </div>
+                        </NavLink>
+                    </div>
+                </div>
+
                 {openModal && <ModalCartIsEmpty setOpenModal={setOpenModal}></ModalCartIsEmpty>}
-            </div>
-            <div>
-                {/* {props.headerPage.currentTime} */}
-            </div>
+
+                {/* <div>
+                    {props.headerPage.currentTime}
+                </div> */}
             </div>
         </header>
     )

@@ -4,10 +4,13 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import cn from "classnames";
 import React from 'react';
+import { ModalOrderList } from '../Modal/Modal';
 
 
 const ShoppingCart = (props) => {
     console.log(props);
+    let [dataForm, setDataForm] = useState('');
+    let [modalState, setModalState] = useState(false);
     let [totalSum, setTotalSum] = useState(0);
     let PizzzaList = props.cartPage.orderList.map((item, index) => {
         totalSum = totalSum + item.price;
@@ -18,12 +21,22 @@ const ShoppingCart = (props) => {
     const validationsSchema = yup.object().shape({
         street: yup.string().typeError('должно быть строкой').required('Пожалуйста, укажите улицу.'),
         house: yup.string().typeError('должно быть строкой').required('Пожалуйста, укажите дом.'),
-        
+        number: yup.number().typeError('должно быть числом').required('Пожалуйста, укажите номер телефона.'),
     })
 
     let getAllData = React.createRef();
     let getAllDataFn = (allData) => {
-        console.log(allData);
+        setDataForm(allData);
+        setModalState(true);
+    }
+
+    let alertMessage = () => {
+        let street = document.getElementsByName('street');
+        let house = document.getElementsByName('house');
+        let number = document.getElementsByName('number');
+        if (street[0].value == '' || house[0].value == '' || number[0].value == '') {
+            alert('Пожалуйста заполните все обязательные поля!');
+        }
     }
 
 
@@ -34,12 +47,15 @@ const ShoppingCart = (props) => {
                     <div>
                         <h2>ВАШ ЗАКАЗ</h2>
                     </div>
+                    <div className={s.modal}>
+                        {modalState && <ModalOrderList setModalState={setModalState} info={props.cartPage.orderList} totalSum={totalSum} allData={dataForm} />}
+                    </div>
                     <div className={s.cartBody}>
                         <div className={s.adress}>
                             <h4>Адрес доставки</h4>
                             <div>
                                 <Formik
-                                    initialValues={{ street: '', house: '', entrance: '', flat: '', floor: ''}}
+                                    initialValues={{ street: '', house: '', entrance: '', flat: '', floor: '', number: '', email: '', name: '', surname: '' }}
                                     validateOnBlur
                                     onSubmit={(values, { setSubmitting }) => {     //сюда в  values передались все значения из формы
                                         /* alert(JSON.stringify(values, null, 2));
@@ -58,27 +74,25 @@ const ShoppingCart = (props) => {
                                         isSubmitting,
                                         isValid,
                                         dirty
-                                      
                                     }) => (
                                         <form onSubmit={handleSubmit} className={s.formikBody}>
-                                            <p className={s.sizeBig}>
-                                                <label htmlFor='street'>Улица *</label><br />
+                                            <div className={cn(s.sizeBig, s.itemFormik)}>
+                                                <label className={s.label} htmlFor='street'>Улица *</label>
                                                 <input
-                                                    className={cn({[s.red] : errors.street != undefined}, s.input)}
+                                                    className={cn({ [s.red]: errors.street != undefined }, s.input)}
                                                     type='text'
                                                     name='street'
                                                     onChange={handleChange}
                                                     onBlur={handleBlur}
                                                     value={values.street}
-                                                    f={console.log(errors.street)}
                                                 />
                                                 {touched.street && errors.street && <div className={s.error}>{errors.street}</div>}
-                                            </p>
+                                            </div>
 
-                                            <p className={s.sizeSmall}>
-                                                <label htmlFor='house'>Дом *</label><br />
+                                            <div className={cn(s.sizeSmall, s.itemFormik)}>
+                                                <label className={s.label} htmlFor='house'>Дом *</label>
                                                 <input
-                                                    className={s.input}
+                                                    className={cn({ [s.red]: errors.house != undefined }, s.input)}
                                                     type='text'
                                                     name='house'
                                                     onChange={handleChange}
@@ -86,10 +100,10 @@ const ShoppingCart = (props) => {
                                                     value={values.house}
                                                 />
                                                 {touched.house && errors.house && <div className={s.error}>{errors.house}</div>}
-                                            </p>
+                                            </div>
 
-                                            <p className={s.sizeSmall}>
-                                                <label htmlFor='entrance'>Подъезд</label><br />
+                                            <div className={cn(s.sizeSmall, s.itemFormik)}>
+                                                <label className={s.label} htmlFor='entrance'>Подъезд</label>
                                                 <input
                                                     className={s.input}
                                                     type='text'
@@ -98,11 +112,10 @@ const ShoppingCart = (props) => {
                                                     onBlur={handleBlur}
                                                     value={values.entrance}
                                                 />
-                                                {touched.entrance && errors.entrance && <p className={s.error}>{errors.entrance}</p>}
-                                            </p>
+                                            </div>
 
-                                            <p className={s.sizeSmall}>
-                                                <label htmlFor='flat'>Квартира</label><br />
+                                            <div className={cn(s.sizeSmall, s.itemFormik)}>
+                                                <label className={s.label} htmlFor='flat'>Квартира</label>
                                                 <input
                                                     className={s.input}
                                                     type='text'
@@ -111,11 +124,10 @@ const ShoppingCart = (props) => {
                                                     onBlur={handleBlur}
                                                     value={values.flat}
                                                 />
-                                                {touched.flat && errors.flat && <p className={s.error}>{errors.flat}</p>}
-                                            </p>
+                                            </div>
 
-                                            <p className={s.sizeSmall}>
-                                                <label htmlFor='floor'>Этаж</label><br />
+                                            <div className={cn(s.sizeSmall, s.itemFormik)}>
+                                                <label className={s.label} htmlFor='floor'>Этаж</label>
                                                 <input
                                                     className={s.input}
                                                     type='text'
@@ -124,25 +136,60 @@ const ShoppingCart = (props) => {
                                                     onBlur={handleBlur}
                                                     value={values.floor}
                                                 />
-                                                {touched.floor && errors.floor && <p className={s.error}>{errors.floor}</p>}
-                                            </p>
+                                            </div>
 
-                                            <p>
-                                                <label htmlFor={`confirmEmail`}>confirmEmail</label><br />
+                                            <div className={s.contacts}><h4>Контактные данные</h4></div>
+
+                                            <div className={cn(s.sizeMiddle, s.itemFormik)}>
+                                                <label className={s.label} htmlFor='number'>Номер телефона *</label>
+                                                <input
+                                                    className={cn({ [s.red]: errors.number != undefined }, s.input)}
+                                                    type='tel'
+                                                    name='number'
+                                                    onChange={handleChange}
+                                                    onBlur={handleBlur}
+                                                    value={values.number}
+                                                />
+                                                {touched.number && errors.number && <div className={s.error}>{errors.number}</div>}
+                                            </div>
+
+                                            <div className={cn(s.sizeMiddle, s.itemFormik)}>
+                                                <label className={s.label} htmlFor='email'>E-mail</label>
                                                 <input
                                                     className={s.input}
                                                     type='text'
-                                                    name={`confirmEmail`}
+                                                    name='email'
                                                     onChange={handleChange}
                                                     onBlur={handleBlur}
-                                                    value={values.confirmEmail}
+                                                    value={values.email}
                                                 />
-                                                {touched.confirmEmail && errors.confirmEmail && <p className={s.error}>{errors.confirmEmail}</p>}
-                                            </p>
+                                            </div>
 
-                                            <button ref={getAllData} disabled={!isValid && !dirty} type='submit'>submit</button>
-                                            
-                                          
+                                            <div className={cn(s.sizeMiddle, s.itemFormik)}>
+                                                <label className={s.label} htmlFor='name'>Имя</label>
+                                                <input
+                                                    className={s.input}
+                                                    type='text'
+                                                    name='name'
+                                                    onChange={handleChange}
+                                                    onBlur={handleBlur}
+                                                    value={values.name}
+                                                />
+                                            </div>
+
+                                            <div className={cn(s.sizeMiddle, s.itemFormik)}>
+                                                <label className={s.label} htmlFor='surname'>Фамилия</label>
+                                                <input
+                                                    className={s.input}
+                                                    type='text'
+                                                    name='surname'
+                                                    onChange={handleChange}
+                                                    onBlur={handleBlur}
+                                                    value={values.surname}
+                                                />
+                                            </div>
+
+                                            <button className={s.formikBtn} ref={getAllData} /* disabled={!isValid && !dirty} */ type='submit'>submit</button>
                                         </form>
                                     )}
                                 </Formik>
@@ -175,14 +222,12 @@ const ShoppingCart = (props) => {
                         </div>
 
                     </div>
-                    <button type='submit' onClick={()=>{getAllData.current.click()}}>getAllData</button>
+                    <button className={s.getAllDataBtn} type='submit' onClick={() => { alertMessage(); getAllData.current.click() }}>getAllData</button>
                 </div>
 
                 : <div>your cart is empty</div>
             }
-
         </div>
-
     )
 }
 
@@ -198,22 +243,5 @@ const OrderItem = (props) => {
     )
 }
 
-/* let Forma = (props) => {
-
-    
-
-
-    return (
-        
-
-
-          
-               
-          
-
-                    
-       
-    )
-} */
 
 export default ShoppingCart;

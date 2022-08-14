@@ -12,31 +12,30 @@ header {
 .headerBody {
     margin: 0 auto;
     max-width: 1440px;
+    display: flex;
+}
+.flexBoxLeft,
+.flexBoxCenter,
+.flexBoxRight {
+    display: flex;
+    width: 33.333%;
+}
+.flexBoxCenter {
+    justify-content: center;
+}
+.flexBoxRight {
+    justify-content: flex-end;
 }
 .headerCart {
     position: relative;
-  
-    
+    align-self: center;
 }
 .shopCartBlock img {
-   position: absolute;
-   top: -65px;
-   right: 20px;
    width: 40px;
    height: 40px;
+   margin-right: 40px;
+  
 }
-/* .shopCartBlock:after {
-    content: attr(dat);
-    position: absolute;
-    background-color: red;
-    width: 20px;
-    height: 20px;
-    display: inline-block;
-    border-radius: 50%;
-    top: -22px;
-    right: 15px;
-    color: #fff;
-} */
 .spanData {
     position: absolute;
     background-color: #e31e24;
@@ -44,13 +43,21 @@ header {
     height: 20px;
     display: inline-block;
     border-radius: 50%;
-    top: -37px;
-    right: 15px;
+    top: 27px;
+    right: 35px;
     color: #fff;
     box-sizing: border-box;
     line-height: 19px;
 }
+.logoBlock {
+    align-self: center;
+}
 .logo {
     width: 200px;
-    margin: 5px;
+    margin: 5px 5px 0px 5px;
+}
+.menuLink {
+    width: 60px;
+    margin: 0 20px;
+    align-self: center;
 }
