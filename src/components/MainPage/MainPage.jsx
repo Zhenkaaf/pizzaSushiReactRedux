@@ -7,7 +7,7 @@ import style from './MainPage.module.css';
 const MainPage = () => {
     return (
         <div className={style.mainBody}>
-            <h1>Доставка пиццы, доставка суши Харьков</h1>
+            <h1>Доставка пиццы, доставка суши Харьков TEST</h1>
 
             <div className={cn(style.flex)}>
             <div><NavLink to='/pizza'><img src='https://kingpizza.kh.ua/resources/products/600_20220219154125_e348884.jpg'></img></NavLink></div>
